@@ -8,13 +8,13 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITextFieldDelegate {
+class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     // MARK: Properties
     
     @IBOutlet weak var mealNameTextField: UITextField!
     @IBOutlet weak var mealNameLabel: UILabel!
-    
+    @IBOutlet weak var mealPhotoImageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +34,19 @@ class ViewController: UIViewController, UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         mealNameLabel.text = textField.text
     }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        // Dismiss the picker if cancelled
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        guard let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage else {
+            fatalError("Expected an image but was provided a \(info)")
+        }
+        mealPhotoImageView.image = selectedImage
+        dismiss(animated: true, completion: nil)
+    }
 
     // MARK: Actions
     
@@ -41,6 +54,15 @@ class ViewController: UIViewController, UITextFieldDelegate {
         mealNameLabel.text = "Default Text"
     }
     
+    @IBAction func selectImageFromPhotoLibrary(_ sender: UITapGestureRecognizer) {
+        // Hide the keyboard.
+        mealNameTextField.resignFirstResponder()
+        
+        let imagePickerController = UIImagePickerController();
+        imagePickerController.sourceType = .photoLibrary
+        imagePickerController.delegate = self
+        present(imagePickerController, animated: true, completion: nil)
+    }
     
 
 

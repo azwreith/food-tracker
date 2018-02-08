@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
@@ -21,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="e4e-n3-66V">
-                                <rect key="frame" x="16" y="63.999999999999993" width="343" height="96.333333333333314"/>
+                                <rect key="frame" x="16" y="63.999999999999972" width="343" height="424.33333333333326"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meal Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ae2-4I-K50">
                                         <rect key="frame" x="0.0" y="0.0" width="86.333333333333329" height="20.333333333333332"/>
@@ -42,9 +43,20 @@
                                             <action selector="setDefaultLabelText:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xtQ-OK-RCN"/>
                                         </connections>
                                     </button>
+                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="320" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="NMj-Ng-av4">
+                                        <rect key="frame" x="0.0" y="104.33333333333337" width="320" height="320"/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="NMj-Ng-av4" secondAttribute="height" multiplier="1:1" id="pu1-Vj-pnp"/>
+                                        </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="yea-jX-CG5" appends="YES" id="eOH-Rc-IgR"/>
+                                        </connections>
+                                    </imageView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="kve-wv-51H" secondAttribute="trailing" id="4oJ-iU-QU5"/>
+                                    <constraint firstItem="NMj-Ng-av4" firstAttribute="top" secondItem="Ied-rm-jnM" secondAttribute="bottom" constant="8" symbolic="YES" id="7lQ-x7-kPd"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -59,11 +71,20 @@
                     <connections>
                         <outlet property="mealNameLabel" destination="Ae2-4I-K50" id="qry-aA-seu"/>
                         <outlet property="mealNameTextField" destination="kve-wv-51H" id="JVO-LK-Cx4"/>
+                        <outlet property="mealPhotoImageView" destination="NMj-Ng-av4" id="VYE-Wq-5X1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="yea-jX-CG5">
+                    <connections>
+                        <action selector="selectImageFromPhotoLibrary:" destination="BYZ-38-t0r" id="J2F-jr-CQn"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="defaultPhoto" width="540" height="540"/>
+    </resources>
 </document>
