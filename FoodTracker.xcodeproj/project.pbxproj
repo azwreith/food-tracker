@@ -54,14 +54,22 @@
 		0C43BD58202C192E0009B9FF /* FoodTracker */ = {
 			isa = PBXGroup;
 			children = (
-				0C43BD59202C192E0009B9FF /* AppDelegate.swift */,
+				0C43BD6B202C1ACE0009B9FF /* Supporting Files */,
 				0C43BD5B202C192E0009B9FF /* ViewController.swift */,
 				0C43BD5D202C192E0009B9FF /* Main.storyboard */,
-				0C43BD60202C192E0009B9FF /* Assets.xcassets */,
-				0C43BD62202C192E0009B9FF /* LaunchScreen.storyboard */,
 				0C43BD65202C192E0009B9FF /* Info.plist */,
 			);
 			path = FoodTracker;
+			sourceTree = "<group>";
+		};
+		0C43BD6B202C1ACE0009B9FF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0C43BD59202C192E0009B9FF /* AppDelegate.swift */,
+				0C43BD60202C192E0009B9FF /* Assets.xcassets */,
+				0C43BD62202C192E0009B9FF /* LaunchScreen.storyboard */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
